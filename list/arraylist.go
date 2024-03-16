@@ -7,7 +7,7 @@ import (
 
 type ArrayList struct{
   values []int
-  size int
+  inserted int
 }
 
 //Função para Inicializar valores
@@ -15,10 +15,11 @@ type ArrayList struct{
 func (arraylist *ArrayList) Initialize(size int) error {
   if size > 0{
     arraylist.values = make([]int, size)
-    fmt.Println("Array criado com tamanho ", arraylist.size)
+    fmt.Println("Array criado com tamanho ", arraylist.inserted)
   } else {
-    return errors.New("Size must be greater than zero")
+    return errors.New("O tamanho ptretendido precisa ser maior que 0 (Zero)")
   }
+  return nil
 }
 
 //Função para dobrar tamanho do array
@@ -29,11 +30,18 @@ func (arraylist *ArrayList) DoubleSize(){
     arraydoubled[i] = arraylist.values[i]
   }
   arraylist.values = arraydoubled
-  fmt.Println("O Array teve seu tamanho dobrado. Tamanho atual: ", arraylist.size)
+  fmt.Println("O Array teve seu tamanho dobrado. Tamanho atual: ", arraylist.inserted)
 }
 
 func (arraylist *ArrayList) Add (value int){
-  if(len(arraylist.values) < arraylist.size){
-    
+  if(len(arraylist.values) > arraylist.inserted){
+    arraylist.values[arraylist.inserted] = value
+  }else{
+    arraylist.DoubleSize()
+    arraylist.values[arraylist.inserted] = value
   }
+}
+
+func (arraylist *ArrayList) AddOnIndex (value, index int) error {
+  
 }
