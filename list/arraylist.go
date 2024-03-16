@@ -1,8 +1,9 @@
 package list
 
 import (
-  "errors"
-  "fmt"
+	"container/list"
+	"errors"
+	"fmt"
 )
 
 type ArrayList struct{
@@ -36,12 +37,23 @@ func (arraylist *ArrayList) DoubleSize(){
 func (arraylist *ArrayList) Add (value int){
   if(len(arraylist.values) > arraylist.inserted){
     arraylist.values[arraylist.inserted] = value
+    fmt.Println("Valor ", value, " inserido com Sucesso!")
   }else{
     arraylist.DoubleSize()
     arraylist.values[arraylist.inserted] = value
+    fmt.Println("Array redimencionado e valor ", value, " inserido com Sucesso!")
   }
 }
 
 func (arraylist *ArrayList) AddOnIndex (value, index int) error {
-  
+  if arraylist.inserted == len(arraylist.values){
+    arraylist.DoubleSize()
+  }
+  if index > arraylist.inserted{
+    return errors.New("O index para inserção do valor precisa ser menor que a quantidade de números já inseridos!")
+  }
+  arrayAux := make([]int, len[arraylist.values])
+  for i := 0; i<index; i++{
+    arrayAux[i]=arraylist.values[i]
+  }
 }
