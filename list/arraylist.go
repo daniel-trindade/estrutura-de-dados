@@ -34,6 +34,7 @@ func (arraylist *ArrayList) DoubleSize(){
   fmt.Println("O Array teve seu tamanho dobrado. Tamanho atual: ", arraylist.inserted)
 }
 
+//Função para adicionar valor no array
 func (arraylist *ArrayList) Add (value int){
   if(len(arraylist.values) > arraylist.inserted){
     arraylist.values[arraylist.inserted] = value
@@ -44,7 +45,7 @@ func (arraylist *ArrayList) Add (value int){
     fmt.Println("Array redimencionado e valor ", value, " inserido com Sucesso!")
   }
 }
-
+ //Função para adicionar valor no array em um índice específico
 func (arraylist *ArrayList) AddOnIndex (value, index int) error {
   if arraylist.inserted == len(arraylist.values){
     arraylist.DoubleSize()
@@ -70,6 +71,7 @@ func (arraylist *ArrayList) AddOnIndex (value, index int) error {
   return nil
 }
 
+//Função para remover um valor em um índice específico
 func (arraylist *ArrayList) RemoveOnIndex(index int) error {
   if index > arraylist.inserted || index <0{
     return errors.New("O index para remoção do valor precisa estar entre 0 e a quantidade de números já inseridos!")
@@ -84,6 +86,7 @@ func (arraylist *ArrayList) RemoveOnIndex(index int) error {
   }
 }
 
+//Função para retornar um valor de um índice específico
 func (arraylist *ArrayList) Get(index int) (int, error){
   if index > arraylist.inserted || index < 0 {
     return -1, errors.New("O index do valor precisa estar entre 0 e a quantidade de números já inseridos!")
@@ -92,6 +95,7 @@ func (arraylist *ArrayList) Get(index int) (int, error){
   }
 }
 
+//Função para editar um valor em um indice específico
 func (arraylist *ArrayList) Set(value int, index int) error{
   if index > arraylist.inserted || index < 0{
     return errors.New("O index precisa estar entre 0 e a quantidade de números já inseridos!")
@@ -100,6 +104,8 @@ func (arraylist *ArrayList) Set(value int, index int) error{
   }
 }
 
+
+//Função para retornar o tamanho do array
 func (arraylist *ArrayList) Size() int{
   return arraylist.inserted
 }
