@@ -49,11 +49,57 @@ func (arraylist *ArrayList) AddOnIndex (value, index int) error {
   if arraylist.inserted == len(arraylist.values){
     arraylist.DoubleSize()
   }
-  if index > arraylist.inserted{
-    return errors.New("O index para inserção do valor precisa ser menor que a quantidade de números já inseridos!")
+  if index > arraylist.inserted || index <0{
+    return errors.New("O index para inserção do valor precisa estar entre 0 e a quantidade de números já inseridos!")
   }
-  arrayAux := make([]int, len[arraylist.values])
+  arrayAux := make([]int, len(arraylist.values))
   for i := 0; i<index; i++{
     arrayAux[i]=arraylist.values[i]
   }
+  
+  arrayAux[index] = value
+  
+  for i:=index; i<arraylist.inserted+1; i++{
+    arrayAux[i+1]=arraylist.values[i]
+  }
+
+  arraylist.values = arrayAux
+
+  arraylist.inserted++
+
+  return nil
+}
+
+func (arraylist *ArrayList) RemoveOnIndex(index int) error {
+  if index > arraylist.inserted || index <0{
+    return errors.New("O index para remoção do valor precisa estar entre 0 e a quantidade de números já inseridos!")
+  }else{
+    for i:= index; i<arraylist.inserted-1; i++{
+      arraylist.values[i] = arraylist.values[i+1]
+    }
+  
+    arraylist.inserted--
+  
+    return nil
+  }
+}
+
+func (arraylist *ArrayList) Get(index int) (int, error){
+  if index > arraylist.inserted || index < 0 {
+    return -1, errors.New("O index do valor precisa estar entre 0 e a quantidade de números já inseridos!")
+  }else{
+    return arraylist.values[index], nil
+  }
+}
+
+func (arraylist *ArrayList) Set(value int, index int) error{
+  if index > arraylist.inserted || index < 0{
+    return errors.New("O index precisa estar entre 0 e a quantidade de números já inseridos!")
+  }else{
+    arraylist.values[index] = value
+  }
+}
+
+func (arraylist *ArrayList) Size() int{
+  return arraylist.inserted
 }
