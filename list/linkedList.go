@@ -119,3 +119,23 @@ func (linkedlist *LinkedList) Get(index int) (int, error){
   }
   
 }
+
+//Função para editar um valor em um índice específico
+func (linkedlist *LinkedList) Set(value, index int) error{
+  if index > linkedlist.inserted || index < 0{
+    return errors.New("O index do valor precisa estar entre 0 e a quantidade de números já inseridos")
+  }else{
+    aux := linkedlist.head
+    for i:=0; i<index; i++{
+      aux = aux.next
+    }
+    aux.value = value
+  }
+
+  return nil
+}
+
+//Função para retornar o tamanho da linkeList
+func (linkedlist *LinkedList) Size() int{
+  return linkedlist.inserted
+}
