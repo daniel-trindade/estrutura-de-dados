@@ -72,3 +72,24 @@ func (linkedlist *LinkedList) AddOnIndex(value, index int) error{
   }
 
 }
+
+//Função para retornar um valor de um indice específico
+func (linkedlist *LinkedList) Get(index int) (int, error){
+
+  if index > linkedlist.inserted || index < 0{
+    return -1, errors.New("O index do valor precisa estar entre 0 e a quantidade de números já inseridos")
+  }else{
+    if index == 0{
+      return linkedlist.head.value, nil
+    }
+
+    aux := linkedlist.head
+    
+    for i:=0; i<index; i++{
+      aux = aux.next
+    }
+
+    return aux.value, nil
+  }
+  
+}
