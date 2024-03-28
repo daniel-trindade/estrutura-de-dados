@@ -2,7 +2,6 @@ package list
 
 import (
   "errors"
-  "fmt"
 )
 
 type Node struct{
@@ -69,23 +68,24 @@ func (linkedlist *LinkedList) AddOnIndex(value, index int) error{
     newNode.next = aux
    
     linkedlist.inserted++
-  }
 
+   return nil
+ }
 }
 
 //Função para remover um valor de um index em específico
 func (linkedlist *LinkedList) RemoveOnIndex(index int) error{
-  if index > linkedlist.inserted || index < 0{
+  if index > linkedlist.inserted || index < 0 {
     errors.New("O index do valor precisa estar entre 0 e a quantidade de números já inseridos")
   }else{
     aux := linkedlist.head
     prev := aux
-    
+
     if index == 0{
       linkedlist.head = aux.next
       return nil
     }
-    
+
     for i:=0; i<index; i++{
       prev = aux
       aux = aux.next

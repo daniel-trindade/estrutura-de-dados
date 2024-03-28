@@ -15,7 +15,7 @@ type ArrayList struct{
 func (arraylist *ArrayList) Initialize(size int) error {
   if size > 0{
     arraylist.values = make([]int, size)
-    fmt.Println("Array criado com tamanho ", arraylist.inserted)
+    fmt.Println("Array criado com tamanho ", len(arraylist.values))
   } else {
     return errors.New("O tamanho ptretendido precisa ser maior que 0 (Zero)")
   }
@@ -34,7 +34,8 @@ func (arraylist *ArrayList) DoubleSize(){
 }
 
 //Função para adicionar valor no array
-func (arraylist *ArrayList) Add (value int){
+func (arraylist *ArrayList) Add(value int){
+  
   if(len(arraylist.values) > arraylist.inserted){
     arraylist.values[arraylist.inserted] = value
     fmt.Println("Valor ", value, " inserido com Sucesso!")
@@ -43,7 +44,9 @@ func (arraylist *ArrayList) Add (value int){
     arraylist.values[arraylist.inserted] = value
     fmt.Println("Array redimencionado e valor ", value, " inserido com Sucesso!")
   }
+  arraylist.inserted++
 }
+
  //Função para adicionar valor no array em um índice específico
 func (arraylist *ArrayList) AddOnIndex (value, index int) error {
   if arraylist.inserted == len(arraylist.values){
@@ -101,6 +104,7 @@ func (arraylist *ArrayList) Set(value int, index int) error{
   }else{
     arraylist.values[index] = value
   }
+  return nil
 }
 
 
