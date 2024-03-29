@@ -76,7 +76,7 @@ func (linkedlist *LinkedList) AddOnIndex(value, index int) error{
 //Função para remover um valor de um index em específico
 func (linkedlist *LinkedList) RemoveOnIndex(index int) error{
   if index > linkedlist.inserted || index < 0 {
-    errors.New("O index do valor precisa estar entre 0 e a quantidade de números já inseridos")
+    return errors.New("O index do valor precisa estar entre 0 e a quantidade de números já inseridos")
   }else{
     aux := linkedlist.head
     prev := aux
@@ -122,7 +122,7 @@ func (linkedlist *LinkedList) Get(index int) (int, error){
 
 //Função para editar um valor em um índice específico
 func (linkedlist *LinkedList) Set(value, index int) error{
-  if index > linkedlist.inserted || index < 0{
+  if index >= linkedlist.inserted || index < 0{
     return errors.New("O index do valor precisa estar entre 0 e a quantidade de números já inseridos")
   }else{
     aux := linkedlist.head

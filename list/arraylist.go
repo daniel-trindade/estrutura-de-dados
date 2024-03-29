@@ -17,7 +17,7 @@ func (arraylist *ArrayList) Initialize(size int) error {
     arraylist.values = make([]int, size)
     fmt.Println("Array criado com tamanho ", len(arraylist.values))
   } else {
-    return errors.New("O tamanho ptretendido precisa ser maior que 0 (Zero)")
+    return errors.New("O tamanho pretendido precisa ser maior que 0 (Zero)")
   }
   return nil
 }
