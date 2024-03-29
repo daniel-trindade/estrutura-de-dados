@@ -150,3 +150,44 @@ func (doublylinkedlist *DoublyLinkedList) Get(index int) (int, error){
     }
   }
 }
+
+//Função para editar um valor em um índice específico{
+func (doublylinkedlist *DoublyLinkedList) Set(value, index int) error{
+  if index > doublylinkedlist.inserted || index < 0{
+
+    return errors.New("O index do valor precisa estar entre 0 e a quantidade de números já inseridos")
+
+  }else{
+
+    if index == 0{
+
+      doublylinkedlist.head.value = value
+
+      return nil
+
+    }else if index == doublylinkedlist.inserted-1{
+
+      doublylinkedlist.tail.value = value
+
+      return nil
+
+    }else{
+
+      aux := doublylinkedlist.head
+
+      for i:=0; i<index; i++{
+        aux = aux.next
+      }
+
+      aux.value = value
+
+      return nil
+
+    }
+  }
+}
+
+//Função para retornar o tamanho da linkeList
+func (doublylinkedlist *DoublyLinkedList) Size() int{
+  return doublylinkedlist.inserted
+}
