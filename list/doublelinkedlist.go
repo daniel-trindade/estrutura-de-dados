@@ -119,3 +119,34 @@ func (doublylinkedlist *DoublyLinkedList) RemoveOnIndex(index int) error{
 
   return nil
 }
+
+//Função para retornar um valor de um índice específico
+func (doublylinkedlist *DoublyLinkedList) Get(index int) (int, error){
+
+  if index > doublylinkedlist.inserted || index < 0{
+    
+    return -1, errors.New("O index do valor precisa estar entre 0 e a quantidade de números já inseridos")
+    
+  }else{
+    
+    if index == 0{
+      
+      return doublylinkedlist.head.value, nil
+      
+    }else if index == doublylinkedlist.inserted-1{
+
+      return doublylinkedlist.tail.value, nil
+      
+    } else{
+
+      aux := doublylinkedlist.head
+
+      for i:=0; i<index; i++{
+        aux = aux.next
+      }
+
+      return aux.value, nil
+      
+    }
+  }
+}
