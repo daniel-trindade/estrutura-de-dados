@@ -1,11 +1,46 @@
 package main
 
 import (
-	"main/list"
+  "main/sorting"
   "fmt"
 )
 
 func main() {
+
+  v := [] int{12, 5, 87, 12, 30, 78, 19, 2, 6, 10}
+
+  fmt.Println("Vetor desordenado: ", v)
+  sorting.SelectionSort(v)
+  fmt.Println("Vetor ordenado: ", v)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+/*
+  
 	llist := list.LinkedList{}
 
   llist.Add(5)
@@ -94,6 +129,8 @@ func main() {
     }
 
   }
+
+*/
 }
 
   
